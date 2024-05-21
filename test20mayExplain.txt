@@ -1,0 +1,70 @@
+#Explanaition for tests 
+#Lab 3
+#17th may, friday
+
+//Scenario 1: User Authentication Test
+
+## Step 1:
+- The code starts by defining a private class who should contains the 3 cases
+the first one will authenticate when the user enters correct credentials
+the second one will authenticate when the user enters incorrect credentials 
+the third one will authenticate when the user enters incorrect password
+
+## Step 2:
+- The test will start with the indicator "@Test" or "@It"
+which helps us to have more organized and clean our class
+
+## Step 3:
+- let's say we previously define AuthenticationModel and AuthenticationService
+in our authenticationService we separate each case like in our test
+with their own expectedMessageMessage. for example:
+
+if (!validUser && !validPass) {
+            return "Should fail with wrong credentials";
+        } else {
+            return "Should succeed with correct credentials";
+        }
+
+
+## Step 4:
+- We should name the test as descriptive as possible
+
+
+//Scenario 2: JWT Authentication Schema
+
+## Step 1: 
+- First I would like to add more data to the token
+to make it stronger. So in my class TokenAuthenticationService
+i'll add 4 variables; time which I already have, a SECRET this could be a env variable,
+a TOKEN_PREFIX like Bearer, this helps to encrypted and a HEADER_STRING which will be the header for my token
+
+## Step 2:
+- Then declarate tests
+the first Scenario is for generatingAuthToken correctly
+Then should be a notation like beforeAll or afterAll
+
+## Step 3:
+- Declarate token with the token services previously, fetching data in case will be necesary 
+we call assertNotNull in case the token is generated assertNotNull
+
+
+## Step 4:
+- Mocking external services: I call our data model, and if it's genarated successfully, it'll print that
+finally we can say the processData is success when the header is call and expects a sucess status
+
+## Step 5:
+- We can say it won't be genarated the token when username and/or passwordare incorrect
+
+
+//Scenario 3: Secure Data Communication Plan
+
+## Step 1:
+- let's take our TokenAuthenticationService to genarate all our security issues
+
+## Step 2:
+- the configuration we should add it's first a security method HTTPS
+for be enable access with a specific service like "/authenticate" cause will be insecure
+
+## Step 3:
+- lets call an override method which will valid the expression
+
