@@ -1,0 +1,74 @@
+interface StandardOrder {
+    function InventoryOrderManager(order);
+    function StandardPaymentManager(order);
+}
+
+interface ExpressOrder{
+    function VerifyInventory(order);
+    function ExpressPaymentManager(order, status: "highPriority");
+}
+
+class ProcessOrderManager {
+    function processOrder(order) {
+        if (order.type == "standard") {
+            override function StandardOrder(order);
+        } else if (order.type == "express") {
+            override function ExpressOrder(order, status)
+        }
+    }
+}
+
+class InventoryOrderManager {
+    function verifyInventory(order) {
+        // Checks inventory levels
+        if (inventory < order.quantity) {
+            throw new Error("Out of stock");
+        }
+    }
+}
+    
+class StandardPaymentManager {
+    function processStandardPayment(order) {
+        // Handles standard payment processing
+        if (paymentService.process(order.amount)) {
+            function paymentMethod(amount)
+            return true;
+        } else {
+            throw new Error("Payment failed");
+        }
+    }
+}
+    
+class ExpressPaymentManager {
+    function processExpressPayment(order, priority) {
+        // Handles express payment processing
+        if (expressPaymentService.process(order.amount, priority)) {
+            function paymentMethod(amount)
+            return true;
+        } else {
+            throw new Error("Express payment failed");
+        }
+    }
+}
+    
+class OrderStatusManager {
+    function updateOrderStatus(order, status) {
+        // Updates the order status in the database
+        database.updateOrderStatus(order.id, status);
+    }
+}
+    
+class NotifyManager {
+    function notifyCustomer(order) {
+        // Sends an email notification to the customer
+        emailService.sendEmail(order.customerEmail, "Your order has been processed.");
+    }
+}
+
+class SystemManager {
+    ProcessOrderManager(order: Order);
+    OrderStatusManager(order.id: Order, status: Status);
+    NotifyManager(order: Order);
+    
+}
+

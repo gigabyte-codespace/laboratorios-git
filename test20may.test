@@ -1,0 +1,109 @@
+//Scenario 1: User Authentication Test
+TEST UserAuthentication
+  ASSERT_TRUE(authenticate("validUser", "validPass"), "Should succeed with correct credentials")
+  ASSERT_FALSE(authenticate("validUser", "wrongPass"), "Should fail with wrong credentials")
+END TEST
+//-------------------------------------------------------------------------------------------------
+private final AuthenticationService authenticationService = new AuthenticationService();
+
+    @Test
+    public void testUserAuthentication_assertCredentials() {
+        String username = "username";
+        String password = "Passw0rd!";
+        String expectedMessage = "Should succeed with correct credentials";
+        String returnMessage = authenticationService.authenticate(username, password);
+    }
+
+    @Test
+    public void testUserAuthentication_wrongCredentials() {
+        String username = "usern4me";
+        String password = "12234567";
+        String expectedMessage = "Should fail with wrong credentials";
+        String returnMessage = authenticationService.authenticate(username, password);
+    }
+
+    @Test
+    public void testUserAuthentication_wrongCredentialsUsername() {
+        String username = "usern4me";
+        String password = "Passw0rd!";
+        String expectedMessage = "Should fail with wrong credentials";
+        String returnMessage = authenticationService.authenticate(username, password);
+    }
+
+//Scenario 2: JWT Authentication Schema
+DEFINE FUNCTION generateJWT(userCredentials):
+  IF validateCredentials(userCredentials):
+    SET tokenExpiration = currentTime + 3600 // Token expires in one hour
+    RETURN encrypt(userCredentials + tokenExpiration, secretKey)
+  ELSE:
+    RETURN error
+//-------------------------------------------------------------------------------------------------
+public class TokenAuthenticationService {
+
+    static final long EXPIRATIONTIME = 3600; 
+    static final String SECRET = "ENV_VARIABLE";
+    static final String TOKEN_PREFIX = "Bearer";
+    static final String HEADER_STRING = "Authorization";
+    ...
+}
+
+private final TokenAuthenticationServiceTest tokenAuthenticationServiceTest = new TokenAuthenticationServiceTest();
+
+    @Test
+    public void generatingAuthToken_success() throws Exception {
+        String token = TokenAuthenticationService.createToken("username","Passw0rd!");
+        
+        @beforeAll
+        fetchData();
+
+        assertNotNull(token);
+        examplesService.processData(dataModel);
+
+        dataModel.perform(encryptBuilders).header("Authorization", token)).andExpect(status());
+        assertTrue(dataModel.isProcessedSuccessfully(), "Data should be processed successfully");
+        
+    }
+
+    @Test
+    public void generatingAuthToken_failed() throws Exception (error){
+        String token = TokenAuthenticationService.createToken("usern4me","123");
+        
+        @beforeAll
+        fetchData();
+
+        assertNotNull(token);
+        examplesService.processData(dataModel);
+
+        dataModel.perform(encryptBuilders).header("Authorization", token)).andExpect(status());
+        assertTrue(dataModel.isProcessedSuccessfully(), "Data should be processed successfully");
+         
+    }
+
+}
+
+
+//Scenario 3: Secure Data Communication Plan
+PLAN secureDataCommunication:
+  IMPLEMENT SSL/TLS for all data in transit
+  USE encrypted storage solutions for data at rest
+  ENSURE all data exchanges comply with HTTPS protocols
+
+//-------------------------------------------------------------------------------------------------
+public class TokenAuthenticationService {
+
+    static final long EXPIRATIONTIME = 3600; 
+    static final String SECRET = "ENV_VARIABLE";
+    static final String TOKEN_PREFIX = "Bearer";
+    static final String HEADER_STRING = "Authorization";
+    ...
+}
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true, proxyServiceClass = true)
+public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
+
+    @Override
+    protected MethodSecurityExpressionHandler createExpressionHandler() {
+        return new AuthMethodSecurityExpressionHandler();
+    }
+
+}

@@ -1,0 +1,21 @@
+### Explanation of the Code
+SystemManager Class
+The SystemManager class is like a manager that helps process orders in a system.
+It has different functions to handle different tasks related to processing orders.
+    * first violation: single responsability
+ the class should have only one responsability so... 
+ I divide the class SystemManager into specific classes with their own function
+adding function to it owns class.
+    *  second violation: Open and close principle
+Then I change the order of the classes and put it at the end the class that calls 
+the other ones with their own param(s) and this ones cannot be modify their content.
+    * third violation: Polimorfism
+when each class is calling their own param(s) is polimorfism.
+    * Fourth violation: Substitution ans Segregation principle
+I split the StandardOrder and ExpressOrder into interfaces for using subtypes, 
+using smaller interfaces for purpose just use them when I actually need it and no more.
+    * Dependency principle
+As we can see, we have two payment types, this is useful because our final class doesn't 
+depend for the two of them. 
+I add a payment method in each class so if one doesn't work, we have the other one
+which doesn't depends on the other.
