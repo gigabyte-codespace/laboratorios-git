@@ -1,0 +1,57 @@
+# SQL Query Optimization
+# 1. 
+### Step 1: Implementing indexes
+- Implementing index idx_quantity for  each order item on OrderDetails
+- Implementing index idx_unitPrice for its unit price from the OrderDetails
+- Then we select OrderID for calculating the total price by multiplying the quantity of each order item with its unit price from the OrderDetails table
+
+### Step 2: optimize queries
+- with Inner join we optimize the query in SQL
+- so We match data from two tables, Orders and OrderDetails
+
+### Step 3: Applying Filters
+- the return only include rows where the quantity of an order item is greater than 10
+
+### Step 4: Partitioning Techniques
+- to get something more distributed it's nice to make a Horizontal Partitioning
+
+
+# 1. SQL Query Optimization
+# 2. 
+### Step 1: Implementing indexes
+- idx_customers_name we specify the table Customers from which we want to select their names
+- idx_customers_city we specify the table Customers from which we want to select their cities
+
+### Step 2: Applying Filters
+- the filter is the users should come from London
+
+### Step 3: Partitioning Techniques
+- order them by their names and also ascendating
+- with a limit of 100 data
+- to get something more distributed it's nice to make a Horizontal Partitioning
+
+
+
+#2. NoSQL Query Implementation
+# 1.
+### Step 1: Implementing indexes
+- I create a collection for the title and the likes in asc order
+
+### Step 2: Applying Filters
+- for active users and organized them by desc
+
+### Step 3: Partitioning Techniques
+- with a limit of 100 data
+- to get something more distributed it's nice to make a Vertical Partitioning
+for id and status and id and likes
+
+
+# 2.
+### Step 1: Implementing indexes
+- Implementation index for the status and the location for each users
+
+### Step 2: Applying Filters
+- for active users 
+
+### Step 3: Partitioning Techniques
+- to get something more distributed it's nice to make a Horizontal Partitioning
