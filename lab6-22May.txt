@@ -1,0 +1,58 @@
+#
+### CI/CD Configuration
+
+name: CI-CD
+
+on:
+  pull_request:
+    types: [opened,reopened,synchronize,closed]
+    branches: [main]
+
+  push:
+    branches:
+      - tmp/feature/**
+      - tmp/feat/**
+      - tmp/bugfix/**
+      - tmp/hotfix/**
+      - tmp/documentation/**
+      - tmp/docs/**
+      - tmp/improvement/**
+      - tmp/refactor/**
+jobs:
+  mobile-cicd:
+    name: Mobile pipeline
+    uses: workflows/mobile-pipeline.yml@main
+    with:
+      snyk-threshold: medium
+    secrets: inherit
+
+# commit messaging Configuration
+npx commitlint --config ./commitlint.config.js --edit "$1"
+
+#
+###
+# action.yml
+name: docker project
+description: example for lab 6
+inputs:
+  who-to-greet:  idUser
+    description: yaml config
+    required: true
+    default: main
+outputs:
+  time: timeStamp
+    description: running time:[Time_out]
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.who-to-greet }}
+
+
+#
+###
+docker scout quickview traefik:latest
+    â SBOM of image already cached, 311 packages indexed
+
+  Your image  traefik:latest  â    0C     2H     8M     1L
+  Base image  alpine:3        â    0C     0H     0M     0L
