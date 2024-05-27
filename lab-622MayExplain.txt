@@ -1,0 +1,11 @@
+#
+####
+# 1. Review Simulated CI/CD Pipeline Configuration:
+- Here's a CI/CD example wich I use on my project
+
+# 2. Analyze Enhancements and Potential Issues:
+- And a commitlint config for updating code
+- A yml configurations on docker
+
+# 3. Write an Analysis Report:
+- with docker scout quickview command provides an overview of the vulnerabilities founded
