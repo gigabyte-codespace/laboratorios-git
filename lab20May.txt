@@ -1,0 +1,68 @@
+#Scenarios for Security Design:
+#Scenario 1: Pseudo-Code for Authentication System
+FUNCTION authenticateUser(username, password):
+  QUERY database WITH username AND password
+  IF found RETURN True
+  ELSE RETURN False
+
+#---------------------------------------
+IMPORT bcrypt
+FUNCTIONauthenticateUser(username, password):
+    DAST_AUTH_USERNAME
+    DAST_AUTH_PASSWORD
+
+    DAST_DISABLE_CLEAR_FIELDS
+
+    
+    DAST_AUTH_PASSWORD = b"Bearer_password"
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password, salt)
+        RETURN DAST_AUTH_PASSWORD
+
+#-------------------------------------------------------
+########################################################
+#-------------------------------------------------------
+
+#Scenario 2:JWT Authentication Schema
+DEFINE FUNCTION generateJWT(userCredentials):
+  IF validateCredentials(userCredentials):
+    SET tokenExpiration = currentTime + 3600 // Token expires in one hour
+    RETURN encrypt(userCredentials + tokenExpiration, secretKey)
+  ELSE:
+    RETURN error
+#---------------------------------------
+private static String createJWT(String id, String username, String password) {
+    SignatureJWTAlgorithm signatureJWTAlgorithm = SignatureJWTAlgorithm.HS256;
+    private static final String OAUTH_TOKEN_URI
+
+    bSignatureJWTAlgorithm.parseBase64Binary(SECRET_KEY);
+    Key signingJWTKey = new SecretJWTKeySpec(password, SECRET_KEY);
+
+    private static final long tokenExpiration = 3600
+    private static final String BEARER_TOKEN = "type:jwt-bearer""
+
+    IF validateCredentials():
+        RETURN encrypt((username,password)) + tokenExpiration, SECRET_KEY)
+    ELSE:
+        RETURN error
+}
+
+#-------------------------------------------------------
+########################################################
+#-------------------------------------------------------
+
+#Scenario 3:Secure Data Communication Plan
+PLAN secureDataCommunication:
+  IMPLEMENT SSL/TLS for all data in transit
+  USE encrypted storage solutions for data at rest
+  ENSURE all data exchanges comply with HTTPS protocols
+
+#---------------------------------------
+PLAN secureDataCommunication:
+    IMPLEMENT openssl req -x509 -Token -newkey rsa:2048 -keyout myserver.key -out myserver.crt
+    USE encrypted storage solutions for data at rest
+    ENSURE all data exchanges comply with HTTPS protocols
+
+#-------------------------------------------------------
+########################################################
+#-------------------------------------------------------
