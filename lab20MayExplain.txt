@@ -1,0 +1,53 @@
+### Code Explanation:
+#Scenario 1: Pseudo-Code for Authentication System
+1. **Applying SAST and DAST** 
+   - I suggest to implement DAST bcz is more for authentication issues and it's after deployment
+   and the username and pass would authenticate during the program is running
+   - I need to verify whether or not authentication was successful with HHTPS
+   DAST_AUTH_PASSWORD and DAST_AUTH_USERNAME will valid the pass applying DAST process
+
+2. **Securing data storage**
+   - DAST_DISABLE_CLEAR_FIELDS we gonna clean data in username and password fields before attempting new one
+
+3. **Integrating encryption**
+   - We need to encrypt the password, this helps for preventing unauthorized access. In this case i'll use hashing crypth bcz is the most commun 
+   the final result after crypthing will be DAST_AUTH_PASSWORD
+
+4. **Secure communication protocols**
+   - all of this in HTTPS protocol which helps for protecting sensitive data.
+
+
+
+#Scenario 2:JWT Authentication Schema
+1. **Applying SAST and DAST** 
+   - in this case we should use SAST since the begining and DAST for hacking test
+
+2. **Integrating encryption**
+   - first we gonna use a signature for the token to make it stronger
+   in this case with hasash 256
+
+3. **Securing data storage**
+   - with authentication we gonnna define the OAUTH_TOKEN_URI
+   - tokenExpiration is for expiration time for the token
+
+4. **Secure communication protocols**
+    - we gonna parse it with parseBase64Binary and also like an encryption method
+    - Another important element it's BEARER_TOKEN wich will use like a protocol to encrypt
+
+
+
+#Scenario 3:Secure Data Communication Plan
+1. **Implementing SSL/TLS** 
+   - with openssl we can implement ssl with a specific token
+   - for TLS we include rsa protocol 
+   - using lastest version of TLS
+
+2. **Server settings**
+   - Configuring servers to disable older protocols or the ones that could be weak
+
+   
+3. **Secure**
+   - Use an import for crypthing
+    import javax.crypto.Cipher;
+    import javax.crypto.KeyGenerator;
+    import javax.crypto.SecretKey;
